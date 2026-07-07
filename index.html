@@ -209,11 +209,15 @@
     <div class="field">
       <label class="lb">ธีมนวัตกรรมในการนำเสนอ (เลือก 1 ธีม) <span class="req">*</span></label>
       <div class="radio-row">
-        <label><input type="radio" name="theme"> Theme 1 People (TRL 4–9)</label>
-        <label><input type="radio" name="theme"> Theme 2 Prosperity (TRL 4–9)</label>
-        <label><input type="radio" name="theme"> Theme 3 Planet (TRL 4–9)</label>
-        <label><input type="radio" name="theme"> Theme 4 Pioneer (TRL 1–3)</label>
+        <label><input type="radio" name="theme" value="1" onchange="showTheme(1)"> Theme 1 People (TRL 4–9)</label>
+        <label><input type="radio" name="theme" value="2" onchange="showTheme(2)"> Theme 2 Prosperity (TRL 4–9)</label>
+        <label><input type="radio" name="theme" value="3" onchange="showTheme(3)"> Theme 3 Planet (TRL 4–9)</label>
+        <label><input type="radio" name="theme" value="4" onchange="showTheme(4)"> Theme 4 Pioneer (TRL 1–3)</label>
       </div>
+    </div>
+    <div class="cond hidden" id="themeDesc">
+      <span class="tag">CONDITIONAL — แสดงคำอธิบายเมื่อเลือก Theme นั้น ๆ</span>
+      <p id="themeDescText" style="margin-top:8px;font-size:12.5px;line-height:1.7;color:#5A4A2F"></p>
     </div>
     <div class="field"><label class="lb">คำอธิบายนวัตกรรมโดยละเอียด <span class="req">*</span></label><textarea placeholder="อธิบายที่มา เทคโนโลยี และความแตกต่างจากสิ่งที่มีอยู่เดิม"></textarea></div>
     <div class="field"><label class="lb">ประโยชน์ของนวัตกรรม <span class="req">*</span></label><textarea></textarea></div>
@@ -353,6 +357,17 @@ function ruleR3(){
   if(team && document.getElementById('members').children.length===0){ addMember(); addMember(); }
   ruleR5();
 }
+/* คำอธิบายธีม — แสดงเมื่อเลือก Theme นั้น ๆ */
+const THEME_DESC = {
+  1:'<b>Theme 1 People (TRL 4–9)</b> ครอบคลุมงานวิจัยและนวัตกรรมที่มีเป้าหมายปลายทางอยู่ที่ “คุณภาพชีวิตของคน” โดยตรง ทั้งด้านสุขภาพกาย สุขภาพจิต การแพทย์ และการมีอายุยืนยาวอย่างมีคุณภาพ (Longevity) โครงการในธีมนี้ต้องแสดงให้เห็นเส้นทางการนำผลงานไปใช้ประโยชน์ที่ชัดเจนว่าใครคือผู้ได้รับประโยชน์ และชีวิตของกลุ่มเป้าหมายจะเปลี่ยนแปลงไปอย่างไรเมื่อผลงานถูกนำไปใช้จริง',
+  2:'<b>Theme 2 Prosperity (TRL 4–9)</b> ครอบคลุมงานวิจัยและนวัตกรรมที่มีเป้าหมายปลายทางอยู่ที่ “การเติบโตทางเศรษฐกิจและความสามารถในการแข่งขันของประเทศ” ไม่ว่าจะเป็นการยกระดับภาคอุตสาหกรรม การสร้างธุรกิจและอุตสาหกรรมใหม่ หรือการเพิ่มผลิตภาพของภาคการผลิตและบริการ โครงการในธีมนี้ต้องแสดงให้เห็นกลไกการสร้างมูลค่าทางเศรษฐกิจที่ชัดเจน เช่น รายได้ การลงทุน การจ้างงาน หรือการทดแทนการนำเข้า',
+  3:'<b>Theme 3 Planet (TRL 4–9)</b> ครอบคลุมงานวิจัยและนวัตกรรมที่มีเป้าหมายปลายทางอยู่ที่ “ความอยู่รอดและความสามารถในการรับมือแรงกระแทก (Resilience)” ของระบบ ชุมชน และประเทศ ท่ามกลางความเสี่ยงจากการเปลี่ยนแปลงสภาพภูมิอากาศ ความผันผวนทางภูมิรัฐศาสตร์ และวิกฤตทรัพยากร โครงการในธีมนี้ต้องแสดงให้เห็นว่าผลงานช่วยลดความเปราะบาง เพิ่มความมั่นคง หรือทำให้ระบบฟื้นตัวจากวิกฤตได้เร็วขึ้นอย่างไร',
+  4:'<b>Theme 4 Pioneer (TRL 1–3)</b> เป็นธีมเดียวที่เปิดรับงานวิจัยระยะต้นน้ำ โดยครอบคลุมเทคโนโลยีเชิงลึก (Deep Tech) งานวิจัยระดับแนวหน้า (Frontier Research) และนวัตกรรมข้ามศาสตร์ ที่มีศักยภาพสร้างองค์ความรู้หรือเทคโนโลยีใหม่ซึ่งยังไม่มีผู้ใดทำได้มาก่อน จุดเน้นของธีมนี้ไม่ใช่ความพร้อมใช้ในวันนี้ แต่คือความแปลกใหม่ (Novelty) ความท้าทายเชิงวิทยาศาสตร์ และศักยภาพในการเปลี่ยนเกม (Game-changing Potential) ในระยะยาว'
+};
+function showTheme(n){
+  document.getElementById('themeDesc').classList.remove('hidden');
+  document.getElementById('themeDescText').innerHTML=THEME_DESC[n];
+}
 /* R4: pending fund */
 function ruleR4(show){ document.getElementById('fundBox').classList.toggle('hidden',!show); }
 /* R5: TED Fund requires team >= 3 (leader + 2 members) */
@@ -366,35 +381,4 @@ function ruleR5(block){
   return true;
 }
 function addMember(){
-  const d=document.createElement('div'); d.className='member';
-  d.innerHTML='<input type="text" placeholder="ชื่อ-นามสกุล ผู้ร่วมโครงการ"><input type="email" placeholder="อีเมล"><button onclick="this.parentNode.remove();ruleR5()">✕</button>';
-  document.getElementById('members').appendChild(d); ruleR5();
-}
-function fillReview(){
-  const em=document.getElementById('email').value||'somchai@university.ac.th';
-  const t=document.querySelector('input[name=rtype]:checked');
-  const y=document.getElementById('gradYear').value;
-  const mode=document.querySelector('input[name=mode]:checked');
-  const ted=document.querySelector('input[name=ted]:checked');
-  const members=document.getElementById('members').children.length;
-  document.getElementById('rvEmail').textContent=em;
-  document.getElementById('rvType').textContent=(t? (t.value==='new'?'นักวิจัยรุ่นใหม่':'นักวิจัยรุ่นกลาง'):'—')+(y?' · จบปี '+y:'');
-  document.getElementById('rvMode').textContent=mode? (mode.value==='team'?('ทีม ('+(members+1)+' คนรวมหัวหน้า) · ชื่อทีม: '+(document.getElementById('teamName').value||'—')):'บุคคล (เดี่ยว)'):'—';
-  document.getElementById('rvTed').textContent=ted? (ted.value==='yes'?'ประสงค์':'ไม่ประสงค์'):'—';
-}
-function submitForm(){
-  const em=document.getElementById('email').value.trim();
-  if(em==='dup@test.com'){ document.getElementById('dupAlert').classList.remove('hidden'); jump('s1'); return; }
-  if(!ruleR5(true)){ jump('s3'); return; }
-  if(!document.getElementById('agree').checked){ alert('โปรดยืนยันการรับรองข้อมูลก่อนส่งใบสมัคร'); return; }
-  fillReview();
-  document.querySelectorAll('.fstep').forEach(x=>x.classList.add('hidden'));
-  document.getElementById('s7').classList.remove('hidden');
-  document.querySelectorAll('#stepbar .step').forEach(s=>{s.classList.add('done');s.classList.remove('cur');});
-  window.scrollTo(0,0);
-}
-function showStatus(){ document.getElementById('stResult').classList.remove('hidden'); }
-</script>
-</body>
-</html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+  const d=document.createElement('div'); d.className='m
