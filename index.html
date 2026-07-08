@@ -55,6 +55,8 @@
   .sf::before { content:''; position:absolute; top:12px; left:0; right:0; height:3px; background:#E0E7EF; }
   .sf .dot { position:absolute; top:4px; left:50%; transform:translateX(-50%); width:19px; height:19px; border-radius:50%; background:#E0E7EF; border:3px solid #fff; }
   .sf.on { color:var(--navy); font-weight:bold; } .sf.on .dot { background:var(--ok); } .sf.on::before { background:var(--ok); }
+  .sf.bad { color:var(--err); font-weight:bold; } .sf.bad .dot { background:var(--err); } .sf.bad::before { background:var(--err); }
+  .stfail { background:#FDECEA !important; color:var(--err) !important; border-color:#F5B7B1 !important; }
   .success { text-align:center; padding:40px 20px; }
   .success .big { font-size:52px; }
   .success h3 { color:var(--ok); margin:10px 0 6px; }
@@ -458,10 +460,22 @@ function showStatus(){
     .then(function(j){
       btn.disabled=false;
       if(j.ok && j.found){
-        document.getElementById('stInfo').innerHTML='รหัสใบสมัคร <b>'+j.appId+'</b>'+(j.team?' · '+j.team:'')+(j.theme?' · '+j.theme:'')+' · ส่งเมื่อ '+j.submittedAt+' · สถานะปัจจุบัน: <b>'+j.status+'</b>';
-        var order=['ส่งใบสมัครแล้ว','ปิดรับสมัคร','อยู่ระหว่างพิจารณา','ประกาศผล','Final'];
-        var idx=0; order.forEach(function(k,i){ if(String(j.status).indexOf(k.split(' ')[0])>=0) idx=i; });
-        document.querySelectorAll('#stFlow .sf').forEach(function(s,i){ s.classList.toggle('on', i<=idx); });
+        var fail = String(j.status).indexOf('ไม่ผ่าน') >= 0;
+        var stInfo = document.getElementById('stInfo');
+        stInfo.innerHTML='รหัสใบสมัคร <b>'+j.appId+'</b>'+(j.team?' · '+j.team:'')+(j.theme?' · '+j.theme:'')+' · ส่งเมื่อ '+j.submittedAt+' · สถานะปัจจุบัน: <b>'+j.status+'</b>'+(fail?'<br>ขอขอบคุณที่ให้ความสนใจ และขอเชิญติดตามกิจกรรมอื่นของ สกสว. ในโอกาสต่อไป':'');
+        stInfo.classList.toggle('stfail', fail);
+        var idx = 0;
+        if(fail){ idx = 3; }
+        else {
+          var order=['ส่งใบสมัครแล้ว','ปิดรับสมัคร','อยู่ระหว่างพิจารณา','ประกาศผล','Final'];
+          order.forEach(function(k,i){ if(String(j.status).indexOf(k.split(' ')[0])>=0) idx=i; });
+        }
+        document.querySelectorAll('#stFlow .sf').forEach(function(s,i){
+          s.classList.remove('on','bad');
+          if(fail && i===3) s.classList.add('bad');
+          else if(i<=idx && !(fail && i>3)) s.classList.add(fail && i===3 ? 'bad' : 'on');
+          if(fail && i===4) s.classList.remove('on');
+        });
         document.getElementById('stResult').classList.remove('hidden');
       } else { document.getElementById('stNotFound').classList.remove('hidden'); }
     })
