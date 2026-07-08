@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MOCKUP — ระบบรับสมัคร Pitching TTS 2026</title>
+<title>รับสมัครกิจกรรมประกวด Pitching — Thailand Talent Summit 2026</title>
 <style>
-  :root { --navy:#1F4E79; --navy2:#163A5C; --orange:#E67E22; --bg:#F4F7FA; --line:#D9E2EC; --ok:#2E7D32; --err:#C0392B; }
+  :root { --navy:#1F4E79; --orange:#E67E22; --bg:#F4F7FA; --line:#D9E2EC; --ok:#2E7D32; --err:#C0392B; }
   * { box-sizing:border-box; margin:0; padding:0; }
   body { font-family:Tahoma,'Leelawadee UI',sans-serif; background:var(--bg); color:#222; font-size:14px; }
-  .mock-banner { background:repeating-linear-gradient(45deg,#FFD54F,#FFD54F 14px,#FFC107 14px,#FFC107 28px); color:#5D4037; text-align:center; font-weight:bold; padding:6px; font-size:12px; letter-spacing:1px; }
   header.site { background:linear-gradient(120deg,var(--navy),#2E6DA4); color:#fff; padding:14px 28px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
   .logo { width:44px; height:44px; border-radius:8px; background:#fff; color:var(--navy); display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:11px; }
   header.site h1 { font-size:17px; } header.site p { font-size:11.5px; opacity:.85; }
@@ -17,48 +16,41 @@
   nav.tabs button.active { background:#fff; color:var(--navy); font-weight:bold; }
   .wrap { max-width:1000px; margin:24px auto 60px; padding:0 16px; }
   .page { display:none; } .page.show { display:block; }
-
-  /* form */
-  .steps { display:flex; gap:0; margin-bottom:18px; background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; position:sticky; top:0; z-index:10; box-shadow:0 2px 8px rgba(0,0,0,.06); }
-  .step { flex:1; padding:12px 8px; text-align:center; font-size:12px; color:#888; border-right:1px solid var(--line); position:relative; cursor:pointer; }
+  .steps { display:flex; margin-bottom:18px; background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; position:sticky; top:0; z-index:10; box-shadow:0 2px 8px rgba(0,0,0,.06); }
+  .step { flex:1; padding:12px 8px; text-align:center; font-size:12px; color:#888; border-right:1px solid var(--line); cursor:pointer; }
   .step:last-child{border-right:none}
   .step .n { display:inline-flex; width:24px; height:24px; border-radius:50%; background:#E0E7EF; color:#666; align-items:center; justify-content:center; font-weight:bold; margin-bottom:4px; }
   .step.cur { background:var(--navy); color:#fff; } .step.cur .n { background:#fff; color:var(--navy); }
-  .step.done .n { background:var(--ok); color:#fff; }
   .card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:26px 28px; }
   .fstep { margin-bottom:20px; scroll-margin-top:86px; }
   .card h3 { color:var(--navy); font-size:17px; margin-bottom:4px; }
   .card .hint { font-size:12px; color:#777; margin-bottom:18px; }
   .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px 18px; }
+  @media (max-width:640px){ .grid2{grid-template-columns:1fr} }
   .field { margin-bottom:14px; }
   label.lb { display:block; font-weight:bold; font-size:13px; margin-bottom:5px; color:#333; }
   label.lb .req { color:var(--err); }
   input[type=text],input[type=email],input[type=tel],select,textarea { width:100%; padding:9px 12px; border:1px solid #BFCBD9; border-radius:8px; font-family:inherit; font-size:13.5px; background:#fff; }
+  input[type=file] { width:100%; padding:9px; border:2px dashed #BFCBD9; border-radius:8px; background:var(--bg); font-family:inherit; font-size:12.5px; }
   textarea { min-height:90px; resize:vertical; }
   .radio-row { display:flex; gap:16px; flex-wrap:wrap; }
   .radio-row label { display:flex; align-items:center; gap:6px; font-size:13.5px; cursor:pointer; background:var(--bg); border:1px solid var(--line); padding:8px 14px; border-radius:8px; }
   .cond { border-left:3px solid var(--orange); background:#FFF8EF; padding:12px 14px; border-radius:0 8px 8px 0; margin:10px 0 14px; }
-  .cond .tag { font-size:10.5px; color:#9A5B00; font-weight:bold; letter-spacing:.5px; }
   .hidden { display:none !important; }
-  .upload { border:2px dashed #BFCBD9; border-radius:10px; padding:18px; text-align:center; color:#666; font-size:12.5px; background:var(--bg); cursor:pointer; }
-  .upload b { color:var(--navy); display:block; margin-bottom:4px; font-size:13px; }
   .member { display:grid; grid-template-columns:1fr 1fr 40px; gap:10px; margin-bottom:10px; align-items:center; }
   .member button { background:#FDECEA; color:var(--err); border:none; border-radius:8px; height:38px; cursor:pointer; font-size:16px; }
   .add-btn { background:#EAF1F8; color:var(--navy); border:1px dashed var(--navy); border-radius:8px; padding:9px 18px; cursor:pointer; font-family:inherit; font-size:13px; }
   .alert { background:#FDECEA; color:var(--err); border:1px solid #F5B7B1; border-radius:8px; padding:10px 14px; font-size:12.5px; margin:10px 0; }
   .info { background:#EAF3EA; color:var(--ok); border:1px solid #A9DFBF; border-radius:8px; padding:10px 14px; font-size:12.5px; margin:10px 0; }
-  .navbtns { display:flex; justify-content:space-between; margin-top:22px; }
+  .navbtns { display:flex; justify-content:flex-end; margin-top:22px; }
   .btn { padding:11px 30px; border-radius:24px; border:none; cursor:pointer; font-family:inherit; font-size:14px; font-weight:bold; }
-  .btn.next { background:var(--navy); color:#fff; } .btn.prev { background:#E0E7EF; color:#444; }
-  .btn.submit { background:var(--orange); color:#fff; }
+  .btn.next { background:var(--navy); color:#fff; }
+  .btn.submit { background:var(--orange); color:#fff; font-size:15px; padding:13px 40px; }
+  .btn:disabled { opacity:.5; cursor:not-allowed; }
   .review td { padding:7px 10px; border-bottom:1px solid var(--line); font-size:13px; vertical-align:top; }
   .review td:first-child { color:#666; width:38%; }
-  .rule { font-size:10.5px; background:#EAF1F8; color:var(--navy); border-radius:4px; padding:1px 6px; margin-left:6px; }
-  .cta { display:inline-block; background:var(--orange); color:#fff; border:none; padding:13px 34px; border-radius:26px; font-size:16px; font-weight:bold; cursor:pointer; font-family:inherit; }
-  .cta.ghost { background:#fff; color:var(--navy); border:2px solid var(--navy); }
-
-  /* status */
-  .status-flow { display:flex; gap:0; margin-top:22px; }
+  .cta { display:inline-block; background:#fff; color:var(--navy); border:2px solid var(--navy); padding:12px 30px; border-radius:26px; font-size:15px; font-weight:bold; cursor:pointer; font-family:inherit; }
+  .status-flow { display:flex; margin-top:22px; }
   .sf { flex:1; text-align:center; position:relative; padding-top:34px; font-size:12px; color:#888; }
   .sf::before { content:''; position:absolute; top:12px; left:0; right:0; height:3px; background:#E0E7EF; }
   .sf .dot { position:absolute; top:4px; left:50%; transform:translateX(-50%); width:19px; height:19px; border-radius:50%; background:#E0E7EF; border:3px solid #fff; }
@@ -66,11 +58,15 @@
   .success { text-align:center; padding:40px 20px; }
   .success .big { font-size:52px; }
   .success h3 { color:var(--ok); margin:10px 0 6px; }
+  #overlay { position:fixed; inset:0; background:rgba(255,255,255,.85); display:none; align-items:center; justify-content:center; flex-direction:column; z-index:99; }
+  #overlay.show { display:flex; }
+  .spin { width:46px; height:46px; border:5px solid var(--line); border-top-color:var(--navy); border-radius:50%; animation:sp 1s linear infinite; margin-bottom:14px; }
+  @keyframes sp { to { transform:rotate(360deg); } }
   footer { text-align:center; color:#999; font-size:11.5px; padding:20px; }
 </style>
 </head>
 <body>
-<div class="mock-banner">⚠ MOCKUP / PROTOTYPE — สำหรับสื่อสารการออกแบบกับทีมพัฒนา NECTEC เท่านั้น ไม่มีการบันทึกข้อมูลจริง | ป้าย R1–R9 อ้างอิงกฎในไฟล์ Requirement Spec ชีต 3 · <a href="dataflow.html" style="color:#5D4037">ดู Data Flow Diagram →</a></div>
+<div id="overlay"><div class="spin"></div><div id="ovText" style="font-size:14px;color:#1F4E79;font-weight:bold">กำลังส่งใบสมัคร โปรดรอสักครู่...</div></div>
 <header class="site">
   <div class="logo">สกสว.<br>TSRI</div>
   <div>
@@ -84,10 +80,8 @@
 </header>
 
 <div class="wrap">
-
-<!-- ============ APPLY ============ -->
 <section id="apply" class="page show">
-  <div class="info" style="margin-bottom:16px">📌 <b>เปิดรับสมัคร 17 – 31 กรกฎาคม 2569</b> · ก่อนสมัครโปรดเตรียม ① ไฟล์ Idea Canvas (PDF) — template ที่ <u>qr.tsri.or.th/s/tts2026</u> ② ไฟล์ประวัติผู้สมัคร/ทีม (PDF) · ประกาศผลรอบแรก TBD · Final Pitch 24 ก.ย. 69 @ PEACH พัทยา · สอบถาม tts@tsri.or.th</div>
+  <div class="info" style="margin-bottom:16px">📌 <b>เปิดรับสมัคร 17 – 31 กรกฎาคม 2569</b> · ก่อนสมัครโปรดเตรียม ① ไฟล์ Idea Canvas (PDF) — template ที่ <a href="https://qr.tsri.or.th/s/tts2026" target="_blank">qr.tsri.or.th/s/tts2026</a> ② ไฟล์ประวัติผู้สมัคร/ทีม (PDF) · Final Pitch 24 ก.ย. 69 @ PEACH พัทยา · สอบถาม tts@tsri.or.th</div>
   <div class="steps" id="stepbar">
     <div class="step cur" onclick="jump('s1')"><span class="n">1</span><br>ตรวจคุณสมบัติ</div>
     <div class="step" onclick="jump('s2')"><span class="n">2</span><br>หัวหน้าโครงการ</div>
@@ -97,249 +91,243 @@
     <div class="step" onclick="jump('s6')"><span class="n">6</span><br>ตรวจทาน & ส่ง</div>
   </div>
 
-  <!-- STEP 1 -->
   <div class="card fstep" id="s1">
     <h3>ขั้นตอนที่ 1 · ตรวจสอบคุณสมบัติผู้สมัคร</h3>
-    <p class="hint">ระบบตรวจสอบคุณสมบัติเบื้องต้นก่อนเข้าสู่แบบฟอร์ม</p>
+    <p class="hint">คุณสมบัติ: นักวิจัยรุ่นใหม่ (จบ ≤5 ปี) หรือนักวิจัยรุ่นกลาง (จบ >5 แต่ ≤15 ปี)</p>
     <div class="field">
-      <label class="lb">อีเมลของหัวหน้าโครงการ <span class="req">*</span> <span class="rule">R6 กันอีเมลซ้ำ</span></label>
+      <label class="lb">อีเมลของหัวหน้าโครงการ <span class="req">*</span></label>
       <input type="email" id="email" placeholder="name@university.ac.th">
-      <div class="alert hidden" id="dupAlert">อีเมลนี้เคยใช้สมัครแล้ว — ระบบจริงจะให้เข้าสู่ระบบเพื่อแก้ไขใบสมัครเดิม (ทดลองพิมพ์ dup@test.com เพื่อดูข้อความนี้)</div>
+      <div class="info hidden" id="dupNote">อีเมลนี้มีใบสมัครอยู่แล้ว — การส่งครั้งนี้จะถือเป็น "การแก้ไขใบสมัครเดิม" (ระบบใช้ฉบับล่าสุด)</div>
     </div>
     <div class="field">
-      <label class="lb">ท่านเป็นนักวิจัยประเภทใด <span class="req">*</span> <span class="rule">R1</span></label>
+      <label class="lb">ท่านเป็นนักวิจัยประเภทใด <span class="req">*</span></label>
       <div class="radio-row">
-        <label><input type="radio" name="rtype" value="new" onchange="ruleR1()"> นักวิจัยรุ่นใหม่ — จบการศึกษาสูงสุด ≤ 5 ปี (ต่อยอด TED Fund ได้)</label>
-        <label><input type="radio" name="rtype" value="mid" onchange="ruleR1()"> นักวิจัยรุ่นกลาง — จบ > 5 แต่ ≤ 15 ปี (ต่อยอด PMU)</label>
+        <label><input type="radio" name="rtype" value="นักวิจัยรุ่นใหม่" onchange="ruleR1()"> นักวิจัยรุ่นใหม่ — จบการศึกษาสูงสุด ≤ 5 ปี (ต่อยอด TED Fund ได้)</label>
+        <label><input type="radio" name="rtype" value="นักวิจัยรุ่นกลาง" onchange="ruleR1()"> นักวิจัยรุ่นกลาง — จบ > 5 แต่ ≤ 15 ปี (ต่อยอด PMU)</label>
       </div>
     </div>
     <div class="cond hidden" id="yearBox">
-      <span class="tag">CONDITIONAL · R1 — ช่วงปีใน dropdown เปลี่ยนตามประเภทนักวิจัย</span>
-      <div class="field" style="margin-top:8px">
+      <div class="field" style="margin-top:4px">
         <label class="lb">ปีที่จบการศึกษาสูงสุด (พ.ศ.) <span class="req">*</span></label>
         <select id="gradYear" style="max-width:260px"></select>
       </div>
     </div>
   </div>
 
-  <!-- STEP 2 -->
   <div class="card fstep" id="s2">
     <h3>ขั้นตอนที่ 2 · ข้อมูลหัวหน้าโครงการ</h3>
-    <p class="hint">ฟิลด์ 1.1–1.11 ตาม Requirement Spec ชีต 2</p>
     <div class="grid2">
       <div class="field"><label class="lb">คำนำหน้าชื่อ <span class="req">*</span></label>
-        <select><option>นาย</option><option>นาง</option><option>นางสาว</option></select></div>
-      <div class="field"><label class="lb">ตำแหน่งวิชาการ</label><input type="text" placeholder="เช่น ผู้ช่วยศาสตราจารย์"></div>
-      <div class="field"><label class="lb">ชื่อ (ภาษาไทย) <span class="req">*</span></label><input type="text"></div>
-      <div class="field"><label class="lb">ชื่อ (ภาษาอังกฤษ) <span class="req">*</span></label><input type="text"></div>
-      <div class="field"><label class="lb">นามสกุล (ภาษาไทย) <span class="req">*</span></label><input type="text"></div>
-      <div class="field"><label class="lb">นามสกุล (ภาษาอังกฤษ) <span class="req">*</span></label><input type="text"></div>
-      <div class="field"><label class="lb">หน่วยงานที่สังกัด <span class="req">*</span></label><input type="text"></div>
-      <div class="field"><label class="lb">ตำแหน่งปัจจุบัน <span class="req">*</span></label><input type="text"></div>
+        <select id="prefix"><option value="">— เลือก —</option><option>นาย</option><option>นาง</option><option>นางสาว</option></select></div>
+      <div class="field"><label class="lb">ตำแหน่งวิชาการ</label><input type="text" id="acadPos" placeholder="เช่น ผู้ช่วยศาสตราจารย์"></div>
+      <div class="field"><label class="lb">ชื่อ (ภาษาไทย) <span class="req">*</span></label><input type="text" id="thFirst"></div>
+      <div class="field"><label class="lb">ชื่อ (ภาษาอังกฤษ) <span class="req">*</span></label><input type="text" id="enFirst"></div>
+      <div class="field"><label class="lb">นามสกุล (ภาษาไทย) <span class="req">*</span></label><input type="text" id="thLast"></div>
+      <div class="field"><label class="lb">นามสกุล (ภาษาอังกฤษ) <span class="req">*</span></label><input type="text" id="enLast"></div>
+      <div class="field"><label class="lb">หน่วยงานที่สังกัด <span class="req">*</span></label><input type="text" id="org"></div>
+      <div class="field"><label class="lb">ตำแหน่งปัจจุบัน <span class="req">*</span></label><input type="text" id="curPos"></div>
     </div>
     <div class="field">
-      <label class="lb">ประเภทของหน่วยงานที่สังกัด <span class="req">*</span> <span class="rule">R2</span></label>
+      <label class="lb">ประเภทของหน่วยงานที่สังกัด <span class="req">*</span></label>
       <div class="radio-row">
-        <label><input type="radio" name="org" onchange="ruleR2(false)"> หน่วยงานวิจัยของรัฐ</label>
-        <label><input type="radio" name="org" onchange="ruleR2(false)"> สถาบันอุดมศึกษา</label>
-        <label><input type="radio" name="org" onchange="ruleR2(false)"> บริษัทเอกชน</label>
-        <label><input type="radio" name="org" onchange="ruleR2(true)"> อื่นๆ</label>
+        <label><input type="radio" name="orgType" value="หน่วยงานวิจัยของรัฐ" onchange="ruleR2(false)"> หน่วยงานวิจัยของรัฐ</label>
+        <label><input type="radio" name="orgType" value="สถาบันอุดมศึกษา" onchange="ruleR2(false)"> สถาบันอุดมศึกษา</label>
+        <label><input type="radio" name="orgType" value="บริษัทเอกชน" onchange="ruleR2(false)"> บริษัทเอกชน</label>
+        <label><input type="radio" name="orgType" value="อื่นๆ" onchange="ruleR2(true)"> อื่นๆ</label>
       </div>
     </div>
     <div class="cond hidden" id="orgOther">
-      <span class="tag">CONDITIONAL · R2 — แสดงเมื่อเลือก "อื่นๆ"</span>
-      <div class="field" style="margin-top:8px"><label class="lb">โปรดระบุประเภทหน่วยงาน <span class="req">*</span></label><input type="text"></div>
+      <div class="field" style="margin-top:4px"><label class="lb">โปรดระบุประเภทหน่วยงาน <span class="req">*</span></label><input type="text" id="orgOtherText"></div>
     </div>
-    <div class="field" style="max-width:300px"><label class="lb">เบอร์โทรศัพท์ <span class="req">*</span></label><input type="tel" placeholder="ตัวเลข 9–10 หลัก"></div>
+    <div class="field" style="max-width:300px"><label class="lb">เบอร์โทรศัพท์ <span class="req">*</span></label><input type="tel" id="phone" placeholder="ตัวเลข 9–10 หลัก"></div>
   </div>
 
-  <!-- STEP 3 -->
   <div class="card fstep" id="s3">
     <h3>ขั้นตอนที่ 3 · รูปแบบการสมัคร และผู้ร่วมโครงการ</h3>
-    <p class="hint">ฟิลด์ 2.0–2.2 | ผู้ร่วมโครงการทุกคนต้องเป็นนักวิจัยรุ่นใหม่หรือรุ่นกลาง</p>
+    <p class="hint">ผู้ร่วมโครงการทุกคนต้องเป็นนักวิจัยรุ่นใหม่หรือนักวิจัยรุ่นกลาง</p>
     <div class="field">
-      <label class="lb">รูปแบบการสมัคร <span class="req">*</span> <span class="rule">R3</span></label>
+      <label class="lb">รูปแบบการสมัคร <span class="req">*</span></label>
       <div class="radio-row">
-        <label><input type="radio" name="mode" value="solo" onchange="ruleR3()"> สมัครแบบบุคคล (เดี่ยว)</label>
-        <label><input type="radio" name="mode" value="team" onchange="ruleR3()"> สมัครแบบทีม</label>
+        <label><input type="radio" name="mode" value="บุคคล" onchange="ruleR3()"> สมัครแบบบุคคล (เดี่ยว)</label>
+        <label><input type="radio" name="mode" value="ทีม" onchange="ruleR3()"> สมัครแบบทีม</label>
       </div>
     </div>
     <div class="field">
-      <label class="lb">ประสงค์ต่อยอดขอทุน TED Fund หรือไม่ <span class="req">*</span> <span class="rule">R5</span></label>
+      <label class="lb">ประสงค์ต่อยอดขอทุน TED Fund หรือไม่ <span class="req">*</span></label>
       <div class="radio-row">
-        <label><input type="radio" name="ted" value="yes" onchange="ruleR5()"> ประสงค์ (ต้องเป็นทีม ≥ 3 คน และสมาชิกจบ ≤ 5 ปี)</label>
-        <label><input type="radio" name="ted" value="no" onchange="ruleR5()"> ไม่ประสงค์</label>
+        <label><input type="radio" name="ted" value="ประสงค์" onchange="ruleR5()"> ประสงค์ (ต้องเป็นทีม ≥ 3 คน และสมาชิกจบ ≤ 5 ปี)</label>
+        <label><input type="radio" name="ted" value="ไม่ประสงค์" onchange="ruleR5()"> ไม่ประสงค์</label>
       </div>
-      <div class="alert hidden" id="tedAlert">R5: กรณีประสงค์ต่อยอด TED Fund ต้องสมัครแบบทีม และมีสมาชิกรวมหัวหน้าโครงการไม่น้อยกว่า 3 คน</div>
+      <div class="alert hidden" id="tedAlert">กรณีประสงค์ต่อยอด TED Fund ต้องสมัครแบบทีม และมีสมาชิกรวมหัวหน้าโครงการไม่น้อยกว่า 3 คน</div>
     </div>
     <div class="cond hidden" id="teamBox">
-      <span class="tag">CONDITIONAL · R3 — แสดงเมื่อสมัครแบบทีม</span>
-      <div class="field" style="margin-top:8px;max-width:420px"><label class="lb">ชื่อทีม <span class="req">*</span></label><input type="text" id="teamName"></div>
+      <div class="field" style="margin-top:4px;max-width:420px"><label class="lb">ชื่อทีม <span class="req">*</span></label><input type="text" id="teamName"></div>
       <label class="lb">รายชื่อผู้ร่วมโครงการ <span class="req">*</span> (เพิ่ม/ลบได้)</label>
       <div id="members"></div>
-      <button class="add-btn" onclick="addMember()">＋ เพิ่มผู้ร่วมโครงการ</button>
+      <button type="button" class="add-btn" onclick="addMember()">＋ เพิ่มผู้ร่วมโครงการ</button>
       <p class="hint" style="margin-top:8px">* หากต่อยอด TED Fund สมาชิกต้องเป็นนักศึกษาหรือนักวิจัยที่จบการศึกษาสูงสุดมาแล้วไม่เกิน 5 ปี</p>
     </div>
   </div>
-
-  <!-- STEP 4 -->
   <div class="card fstep" id="s4">
     <h3>ขั้นตอนที่ 4 · ข้อมูลนวัตกรรม</h3>
-    <p class="hint">ฟิลด์ 3.1–3.9 ตาม Requirement Spec ชีต 2</p>
     <div class="grid2">
-      <div class="field"><label class="lb">ชื่อนวัตกรรม (ภาษาไทย) <span class="req">*</span></label><input type="text"></div>
-      <div class="field"><label class="lb">ชื่อนวัตกรรม (ภาษาอังกฤษ) <span class="req">*</span></label><input type="text"></div>
+      <div class="field"><label class="lb">ชื่อนวัตกรรม (ภาษาไทย) <span class="req">*</span></label><input type="text" id="innovTH"></div>
+      <div class="field"><label class="lb">ชื่อนวัตกรรม (ภาษาอังกฤษ) <span class="req">*</span></label><input type="text" id="innovEN"></div>
     </div>
     <div class="field">
       <label class="lb">ธีมนวัตกรรมในการนำเสนอ (เลือก 1 ธีม) <span class="req">*</span></label>
       <div class="radio-row">
-        <label><input type="radio" name="theme" value="1" onchange="showTheme(1)"> Theme 1 People (TRL 4–9)</label>
-        <label><input type="radio" name="theme" value="2" onchange="showTheme(2)"> Theme 2 Prosperity (TRL 4–9)</label>
-        <label><input type="radio" name="theme" value="3" onchange="showTheme(3)"> Theme 3 Planet (TRL 4–9)</label>
-        <label><input type="radio" name="theme" value="4" onchange="showTheme(4)"> Theme 4 Pioneer (TRL 1–3)</label>
+        <label><input type="radio" name="theme" value="Theme 1 People" onchange="showTheme(1)"> Theme 1 People (TRL 4–9)</label>
+        <label><input type="radio" name="theme" value="Theme 2 Prosperity" onchange="showTheme(2)"> Theme 2 Prosperity (TRL 4–9)</label>
+        <label><input type="radio" name="theme" value="Theme 3 Planet" onchange="showTheme(3)"> Theme 3 Planet (TRL 4–9)</label>
+        <label><input type="radio" name="theme" value="Theme 4 Pioneer" onchange="showTheme(4)"> Theme 4 Pioneer (TRL 1–3)</label>
       </div>
     </div>
     <div class="cond hidden" id="themeDesc">
-      <span class="tag">CONDITIONAL — แสดงคำอธิบายเมื่อเลือก Theme นั้น ๆ</span>
-      <p id="themeDescText" style="margin-top:8px;font-size:12.5px;line-height:1.7;color:#5A4A2F"></p>
+      <p id="themeDescText" style="font-size:12.5px;line-height:1.7;color:#5A4A2F"></p>
     </div>
-    <div class="field"><label class="lb">คำอธิบายนวัตกรรมโดยละเอียด <span class="req">*</span></label><textarea placeholder="อธิบายที่มา เทคโนโลยี และความแตกต่างจากสิ่งที่มีอยู่เดิม"></textarea></div>
-    <div class="field"><label class="lb">ประโยชน์ของนวัตกรรม <span class="req">*</span></label><textarea></textarea></div>
+    <div class="field"><label class="lb">คำอธิบายนวัตกรรมโดยละเอียด <span class="req">*</span></label><textarea id="innovDesc" placeholder="อธิบายที่มา เทคโนโลยี และความแตกต่างจากสิ่งที่มีอยู่เดิม"></textarea></div>
+    <div class="field"><label class="lb">ประโยชน์ของนวัตกรรม <span class="req">*</span></label><textarea id="innovBenefit"></textarea></div>
     <div class="grid2">
-      <div class="field"><label class="lb">รูปภาพประกอบนวัตกรรม</label>
-        <div class="upload"><b>ลากไฟล์มาวาง หรือคลิกเพื่อเลือก</b>jpg / jpeg / png · สูงสุด 5 ไฟล์ · ไฟล์ละไม่เกิน 10 MB</div></div>
-      <div class="field"><label class="lb">เอกสารอื่นๆ ที่เกี่ยวข้อง (หากมี)</label>
-        <div class="upload"><b>ลากไฟล์มาวาง หรือคลิกเพื่อเลือก</b>สูงสุด 5 ไฟล์ · ไฟล์ละไม่เกิน 10 MB</div></div>
+      <div class="field"><label class="lb">รูปภาพประกอบนวัตกรรม (jpg/png สูงสุด 5 ไฟล์ ไฟล์ละ ≤10 MB)</label>
+        <input type="file" id="imgFiles" multiple accept=".jpg,.jpeg,.png"></div>
+      <div class="field"><label class="lb">เอกสารอื่นๆ ที่เกี่ยวข้อง (หากมี สูงสุด 5 ไฟล์ ไฟล์ละ ≤10 MB)</label>
+        <input type="file" id="otherFiles" multiple></div>
     </div>
     <div class="field">
-      <label class="lb">นวัตกรรมนี้อยู่ระหว่างการยื่นขอรับทุนจากหน่วยงานอื่นหรือไม่ <span class="req">*</span> <span class="rule">R4</span></label>
+      <label class="lb">นวัตกรรมนี้อยู่ระหว่างการยื่นขอรับทุนจากหน่วยงานอื่นหรือไม่ <span class="req">*</span></label>
       <div class="radio-row">
-        <label><input type="radio" name="fund" onchange="ruleR4(false)"> ไม่อยู่ระหว่างยื่นขอรับทุน</label>
-        <label><input type="radio" name="fund" onchange="ruleR4(true)"> อยู่ระหว่างยื่นขอรับทุน</label>
+        <label><input type="radio" name="fund" value="ไม่อยู่ระหว่างยื่น" onchange="ruleR4(false)"> ไม่อยู่ระหว่างยื่นขอรับทุน</label>
+        <label><input type="radio" name="fund" value="อยู่ระหว่างยื่น" onchange="ruleR4(true)"> อยู่ระหว่างยื่นขอรับทุน</label>
       </div>
     </div>
     <div class="cond hidden" id="fundBox">
-      <span class="tag">CONDITIONAL · R4 — แสดงเมื่อเลือก "อยู่ระหว่างยื่นขอรับทุน"</span>
-      <div class="field" style="margin-top:8px;max-width:420px"><label class="lb">ชื่อหน่วยงานที่กำลังยื่นขอรับทุน <span class="req">*</span></label><input type="text"></div>
+      <div class="field" style="margin-top:4px;max-width:420px"><label class="lb">ชื่อหน่วยงานที่กำลังยื่นขอรับทุน <span class="req">*</span></label><input type="text" id="fundOrg"></div>
     </div>
   </div>
 
-  <!-- STEP 5 -->
   <div class="card fstep" id="s5">
     <h3>ขั้นตอนที่ 5 · เอกสารแนบประกอบใบสมัคร</h3>
-    <p class="hint">รับเฉพาะไฟล์ PDF <span class="rule">R7</span></p>
-    <div class="info">ยังไม่มีไฟล์ Idea Canvas? ดาวน์โหลด template ได้ที่ <u>qr.tsri.or.th/s/tts2026</u> กรอกข้อมูลแล้วบันทึกเป็น PDF ก่อนอัปโหลด</div>
+    <p class="hint">รับเฉพาะไฟล์ PDF ขนาดไม่เกิน 10 MB</p>
+    <div class="info">ยังไม่มีไฟล์ Idea Canvas? ดาวน์โหลด template ได้ที่ <a href="https://qr.tsri.or.th/s/tts2026" target="_blank">qr.tsri.or.th/s/tts2026</a> กรอกข้อมูลแล้วบันทึกเป็น PDF ก่อนอัปโหลด</div>
     <div class="grid2">
-      <div class="field"><label class="lb">แบบฟอร์ม Idea Canvas <span class="req">*</span></label>
-        <div class="upload"><b>อัปโหลดไฟล์ PDF</b>PDF เท่านั้น · 1 ไฟล์ · ไม่เกิน 10 MB</div></div>
-      <div class="field"><label class="lb">ประวัติผู้สมัคร / ทีมของผู้สมัคร <span class="req">*</span></label>
-        <div class="upload"><b>อัปโหลดไฟล์ PDF</b>PDF เท่านั้น · 1 ไฟล์ · ไม่เกิน 10 MB</div></div>
+      <div class="field"><label class="lb">แบบฟอร์ม Idea Canvas (PDF) <span class="req">*</span></label>
+        <input type="file" id="canvasFile" accept=".pdf"></div>
+      <div class="field"><label class="lb">ประวัติผู้สมัคร / ทีมของผู้สมัคร (PDF) <span class="req">*</span></label>
+        <input type="file" id="profileFile" accept=".pdf"></div>
     </div>
-    <div class="alert">ตัวอย่างข้อความเมื่อไฟล์ไม่ผ่านเงื่อนไข (R7): "ไม่สามารถอัปโหลดได้ — รับเฉพาะไฟล์ .pdf ขนาดไม่เกิน 10 MB"</div>
   </div>
 
-  <!-- STEP 6 -->
   <div class="card fstep" id="s6">
     <h3>ขั้นตอนที่ 6 · ตรวจทานและยืนยันการส่งใบสมัคร</h3>
-    <p class="hint">ระบบสรุปข้อมูลทั้งหมดให้ตรวจทานก่อน Submit — อัปเดตอัตโนมัติตามที่กรอก</p>
+    <p class="hint">ตารางสรุปอัปเดตอัตโนมัติตามข้อมูลที่กรอก</p>
     <table class="review" width="100%">
       <tr><td>อีเมล</td><td id="rvEmail">—</td></tr>
       <tr><td>ประเภทนักวิจัย / ปีที่จบ</td><td id="rvType">—</td></tr>
       <tr><td>รูปแบบการสมัคร</td><td id="rvMode">—</td></tr>
       <tr><td>ต่อยอด TED Fund</td><td id="rvTed">—</td></tr>
-      <tr><td>เอกสารแนบ</td><td>Idea_Canvas.pdf ✓ · Team_Profile.pdf ✓</td></tr>
+      <tr><td>ธีม / ชื่อนวัตกรรม</td><td id="rvInnov">—</td></tr>
+      <tr><td>เอกสารแนบ</td><td id="rvFiles">—</td></tr>
     </table>
     <div class="field" style="margin-top:16px">
       <label class="radio-row" style="display:flex"><input type="checkbox" id="agree"> ข้าพเจ้ารับรองว่าข้อมูลถูกต้อง และยอมรับว่าผลการพิจารณาของคณะทำงานโครงการเป็นที่สิ้นสุด <span class="req">*</span></label>
     </div>
-    <div class="info">หลังส่งใบสมัคร: ระบบส่งอีเมลยืนยันอัตโนมัติ และท่านยังแก้ไขใบสมัครได้จนถึง 31 ก.ค. 2569 <span class="rule">R9</span></div>
-    <div class="navbtns"><span></span><button class="btn submit" onclick="submitForm()">ส่งใบสมัคร ✓</button></div>
+    <div class="info">หลังส่งใบสมัคร ระบบจะส่งอีเมลยืนยันพร้อมรหัสใบสมัคร และท่านยังแก้ไขได้จนถึง 31 ก.ค. 2569 (กรอกฟอร์มใหม่ด้วยอีเมลเดิม ระบบจะใช้ฉบับล่าสุด)</div>
+    <div class="alert hidden" id="submitErr"></div>
+    <div class="navbtns"><button class="btn submit" id="btnSubmit" onclick="submitForm()">ส่งใบสมัคร ✓</button></div>
   </div>
 
-  <!-- SUCCESS -->
   <div class="card fstep hidden" id="s7">
     <div class="success">
       <div class="big">✅</div>
-      <h3>ส่งใบสมัครเรียบร้อยแล้ว</h3>
-      <p>รหัสใบสมัครของท่าน: <b style="color:var(--navy)">TTS26-P-00142</b></p>
-      <p style="color:#666;font-size:13px;margin-top:8px">ระบบได้ส่งอีเมลยืนยันไปยังอีเมลของท่านแล้ว<br>ท่านสามารถแก้ไขใบสมัครได้จนถึงวันที่ 31 กรกฎาคม 2569 และติดตามผลได้ที่เมนู "ตรวจสอบสถานะ"</p>
-      <br><button class="cta ghost" onclick="go('status')">ไปหน้าตรวจสอบสถานะ</button>
+      <h3 id="okTitle">ส่งใบสมัครเรียบร้อยแล้ว</h3>
+      <p>รหัสใบสมัครของท่าน: <b style="color:var(--navy)" id="okId">—</b></p>
+      <p style="color:#666;font-size:13px;margin-top:8px">ระบบได้ส่งอีเมลยืนยันไปยังอีเมลของท่านแล้ว (โปรดตรวจกล่อง Junk/Spam ด้วย)<br>แก้ไขใบสมัครได้จนถึง 31 กรกฎาคม 2569 และติดตามผลได้ที่เมนู "ตรวจสอบสถานะ"</p>
+      <br><button class="cta" onclick="go('status')">ไปหน้าตรวจสอบสถานะ</button>
     </div>
   </div>
 </section>
 
-<!-- ============ STATUS ============ -->
 <section id="status" class="page">
   <div class="card">
     <h3>ตรวจสอบสถานะใบสมัคร</h3>
-    <p class="hint">กรอกอีเมลที่ใช้สมัคร ระบบจริงจะส่งลิงก์ยืนยัน/OTP ก่อนแสดงข้อมูล</p>
+    <p class="hint">กรอกอีเมลที่ใช้สมัคร</p>
     <div style="display:flex;gap:10px;max-width:520px">
       <input type="email" placeholder="อีเมลที่ใช้สมัคร" id="stEmail">
-      <button class="btn next" onclick="showStatus()">ตรวจสอบ</button>
+      <button class="btn next" id="btnStatus" onclick="showStatus()">ตรวจสอบ</button>
     </div>
+    <div id="stNotFound" class="alert hidden">ไม่พบใบสมัครของอีเมลนี้ — โปรดตรวจสอบตัวสะกด หรือติดต่อ tts@tsri.or.th</div>
     <div id="stResult" class="hidden">
-      <div class="info" style="margin-top:18px">รหัสใบสมัคร <b>TTS26-P-00142</b> · ทีม "NanoHeal" · Theme 1 People · สมัครเมื่อ 18 ก.ค. 2569</div>
-      <div class="status-flow">
-        <div class="sf on"><span class="dot"></span>ส่งใบสมัครแล้ว<br><small>18 ก.ค. 69</small></div>
-        <div class="sf on"><span class="dot"></span>ปิดรับสมัคร<br><small>31 ก.ค. 69</small></div>
-        <div class="sf"><span class="dot"></span>อยู่ระหว่างพิจารณารอบแรก<br><small>—</small></div>
-        <div class="sf"><span class="dot"></span>ประกาศผลรอบแรก<br><small>TBD</small></div>
+      <div class="info" style="margin-top:18px" id="stInfo"></div>
+      <div class="status-flow" id="stFlow">
+        <div class="sf"><span class="dot"></span>ส่งใบสมัครแล้ว</div>
+        <div class="sf"><span class="dot"></span>ปิดรับสมัคร<br><small>31 ก.ค. 69</small></div>
+        <div class="sf"><span class="dot"></span>อยู่ระหว่างพิจารณา</div>
+        <div class="sf"><span class="dot"></span>ประกาศผลรอบแรก</div>
         <div class="sf"><span class="dot"></span>Final Pitch<br><small>24 ก.ย. 69</small></div>
       </div>
-      <p class="hint" style="margin-top:16px">ปุ่ม "แก้ไขใบสมัคร" จะแสดงเฉพาะช่วงก่อนปิดรับสมัคร (R9) — <button class="add-btn" style="font-size:12px">แก้ไขใบสมัคร</button></p>
     </div>
   </div>
 </section>
-
 </div>
-<footer>MOCKUP v2 · จัดทำโดย สกสว. เพื่อสื่อสารการออกแบบกับทีมพัฒนาระบบ TTS (NECTEC) · ใช้คู่กับ Requirement_Spec_ระบบรับสมัคร_Pitching_TTS2026.xlsx และ Data Flow Diagram · 7 ก.ค. 2569</footer>
-
+<footer>สำนักงานคณะกรรมการส่งเสริมวิทยาศาสตร์ วิจัยและนวัตกรรม (สกสว.) · Thailand Talent Summit 2026 · สอบถาม tts@tsri.or.th</footer>
 <script>
+/* ============ ตั้งค่า: วาง URL ของ Apps Script Web App (ลงท้าย /exec) ============ */
+var API_URL = 'PASTE_WEB_APP_URL_HERE';
+
+function apiReady(){ return API_URL.indexOf('https://') === 0; }
 function go(p){
-  document.querySelectorAll('.page').forEach(x=>x.classList.remove('show'));
+  document.querySelectorAll('.page').forEach(function(x){x.classList.remove('show');});
   document.getElementById(p).classList.add('show');
-  document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('nav.tabs button').forEach(function(b){b.classList.remove('active');});
   document.getElementById('tab'+p.charAt(0).toUpperCase()+p.slice(1)).classList.add('active');
   window.scrollTo(0,0);
 }
 function jump(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
-/* scroll-spy: ไฮไลต์ขั้นตอนตามส่วนที่กำลังดู */
 window.addEventListener('scroll',function(){
   if(!document.getElementById('apply').classList.contains('show')) return;
-  var steps=document.querySelectorAll('#stepbar .step');
-  var active=0;
-  for(var i=1;i<=6;i++){
-    var el=document.getElementById('s'+i);
-    if(el && !el.classList.contains('hidden') && el.getBoundingClientRect().top<140) active=i;
-  }
+  var steps=document.querySelectorAll('#stepbar .step'); var active=0;
+  for(var i=1;i<=6;i++){ var el=document.getElementById('s'+i);
+    if(el && !el.classList.contains('hidden') && el.getBoundingClientRect().top<140) active=i; }
   steps.forEach(function(s,i){ s.classList.toggle('cur',i+1===active); });
 });
-/* R6: ตรวจอีเมลซ้ำแบบ realtime */
 document.addEventListener('DOMContentLoaded',function(){
-  document.getElementById('email').addEventListener('blur',function(){
-    document.getElementById('dupAlert').classList.toggle('hidden',this.value.trim()!=='dup@test.com');
-  });
+  document.getElementById('email').addEventListener('blur',checkDup);
   document.addEventListener('change',fillReview);
 });
-/* R1: year dropdown depends on researcher type */
+function checkDup(){
+  var em=document.getElementById('email').value.trim().toLowerCase();
+  if(!apiReady() || !em || em.indexOf('@')<0) return;
+  fetch(API_URL+'?action=check&email='+encodeURIComponent(em))
+    .then(function(r){return r.json();})
+    .then(function(j){ document.getElementById('dupNote').classList.toggle('hidden', !(j.ok && j.exists)); })
+    .catch(function(){});
+}
 function ruleR1(){
   var t=document.querySelector('input[name=rtype]:checked').value;
   var sel=document.getElementById('gradYear'); sel.innerHTML='<option value="">— เลือกปี พ.ศ. —</option>';
   var nowBE=2569, from, to;
-  if(t==='new'){ from=nowBE-5; to=nowBE; } else { from=nowBE-15; to=nowBE-6; }
+  if(t==='นักวิจัยรุ่นใหม่'){ from=nowBE-5; to=nowBE; } else { from=nowBE-15; to=nowBE-6; }
   for(var y=to;y>=from;y--){ var o=document.createElement('option'); o.textContent=y; sel.appendChild(o); }
   document.getElementById('yearBox').classList.remove('hidden');
 }
-/* R2: org other */
 function ruleR2(other){ document.getElementById('orgOther').classList.toggle('hidden',!other); }
-/* R3: team section */
 function ruleR3(){
-  var team=document.querySelector('input[name=mode]:checked').value==='team';
+  var team=document.querySelector('input[name=mode]:checked').value==='ทีม';
   document.getElementById('teamBox').classList.toggle('hidden',!team);
   if(team && document.getElementById('members').children.length===0){ addMember(); addMember(); }
   ruleR5();
 }
-/* คำอธิบายธีม — แสดงเมื่อเลือก Theme นั้น ๆ */
+function ruleR4(show){ document.getElementById('fundBox').classList.toggle('hidden',!show); }
+function ruleR5(block){
+  var ted=document.querySelector('input[name=ted]:checked');
+  var mode=document.querySelector('input[name=mode]:checked');
+  var members=document.getElementById('members').children.length;
+  var bad = !!(ted && ted.value==='ประสงค์' && (!mode || mode.value!=='ทีม' || members<2));
+  document.getElementById('tedAlert').classList.toggle('hidden',!bad);
+  if(block===true && bad) return false;
+  return true;
+}
 var THEME_DESC = {
   1:'<b>Theme 1 People (TRL 4–9)</b> ครอบคลุมงานวิจัยและนวัตกรรมที่มีเป้าหมายปลายทางอยู่ที่ “คุณภาพชีวิตของคน” โดยตรง ทั้งด้านสุขภาพกาย สุขภาพจิต การแพทย์ และการมีอายุยืนยาวอย่างมีคุณภาพ (Longevity) โครงการในธีมนี้ต้องแสดงให้เห็นเส้นทางการนำผลงานไปใช้ประโยชน์ที่ชัดเจนว่าใครคือผู้ได้รับประโยชน์ และชีวิตของกลุ่มเป้าหมายจะเปลี่ยนแปลงไปอย่างไรเมื่อผลงานถูกนำไปใช้จริง',
   2:'<b>Theme 2 Prosperity (TRL 4–9)</b> ครอบคลุมงานวิจัยและนวัตกรรมที่มีเป้าหมายปลายทางอยู่ที่ “การเติบโตทางเศรษฐกิจและความสามารถในการแข่งขันของประเทศ” ไม่ว่าจะเป็นการยกระดับภาคอุตสาหกรรม การสร้างธุรกิจและอุตสาหกรรมใหม่ หรือการเพิ่มผลิตภาพของภาคการผลิตและบริการ โครงการในธีมนี้ต้องแสดงให้เห็นกลไกการสร้างมูลค่าทางเศรษฐกิจที่ชัดเจน เช่น รายได้ การลงทุน การจ้างงาน หรือการทดแทนการนำเข้า',
@@ -350,47 +338,134 @@ function showTheme(n){
   document.getElementById('themeDesc').classList.remove('hidden');
   document.getElementById('themeDescText').innerHTML=THEME_DESC[n];
 }
-/* R4: pending fund */
-function ruleR4(show){ document.getElementById('fundBox').classList.toggle('hidden',!show); }
-/* R5: TED Fund requires team >= 3 (leader + 2 members) */
-function ruleR5(block){
-  var ted=document.querySelector('input[name=ted]:checked');
-  var mode=document.querySelector('input[name=mode]:checked');
-  var members=document.getElementById('members').children.length;
-  var bad = !!(ted && ted.value==='yes' && (!mode || mode.value!=='team' || members<2));
-  document.getElementById('tedAlert').classList.toggle('hidden',!bad);
-  if(block===true && bad) return false;
-  return true;
-}
 function addMember(){
   var d=document.createElement('div'); d.className='member';
-  d.innerHTML='<input type="text" placeholder="ชื่อ-นามสกุล ผู้ร่วมโครงการ"><input type="email" placeholder="อีเมล"><button onclick="this.parentNode.remove();ruleR5()">✕</button>';
+  d.innerHTML='<input type="text" placeholder="ชื่อ-นามสกุล ผู้ร่วมโครงการ"><input type="email" placeholder="อีเมล"><button type="button" onclick="this.parentNode.remove();ruleR5()">✕</button>';
   document.getElementById('members').appendChild(d); ruleR5();
 }
+function val(id){ return document.getElementById(id).value.trim(); }
+function radioVal(name){ var r=document.querySelector('input[name='+name+']:checked'); return r ? r.value : ''; }
+function getMembers(){
+  var out=[];
+  document.querySelectorAll('#members .member').forEach(function(m){
+    var ins=m.querySelectorAll('input');
+    if(ins[0].value.trim()) out.push({name:ins[0].value.trim(), email:ins[1].value.trim()});
+  });
+  return out;
+}
 function fillReview(){
-  var em=document.getElementById('email').value||'—';
-  var t=document.querySelector('input[name=rtype]:checked');
-  var y=document.getElementById('gradYear').value;
-  var mode=document.querySelector('input[name=mode]:checked');
-  var ted=document.querySelector('input[name=ted]:checked');
-  var members=document.getElementById('members').children.length;
-  document.getElementById('rvEmail').textContent=em;
-  document.getElementById('rvType').textContent=(t? (t.value==='new'?'นักวิจัยรุ่นใหม่':'นักวิจัยรุ่นกลาง'):'—')+(y?' · จบปี '+y:'');
-  document.getElementById('rvMode').textContent=mode? (mode.value==='team'?('ทีม ('+(members+1)+' คนรวมหัวหน้า) · ชื่อทีม: '+(document.getElementById('teamName').value||'—')):'บุคคล (เดี่ยว)'):'—';
-  document.getElementById('rvTed').textContent=ted? (ted.value==='yes'?'ประสงค์':'ไม่ประสงค์'):'—';
+  var y=val('gradYear');
+  document.getElementById('rvEmail').textContent = val('email')||'—';
+  document.getElementById('rvType').textContent = (radioVal('rtype')||'—')+(y?' · จบปี '+y:'');
+  var mode=radioVal('mode'), mem=getMembers();
+  document.getElementById('rvMode').textContent = mode ? (mode==='ทีม' ? 'ทีม ('+(mem.length+1)+' คนรวมหัวหน้า) · ชื่อทีม: '+(val('teamName')||'—') : 'บุคคล (เดี่ยว)') : '—';
+  document.getElementById('rvTed').textContent = radioVal('ted')||'—';
+  document.getElementById('rvInnov').textContent = (radioVal('theme')||'—')+' · '+(val('innovTH')||'—');
+  var c=document.getElementById('canvasFile').files.length, p=document.getElementById('profileFile').files.length;
+  var im=document.getElementById('imgFiles').files.length, ot=document.getElementById('otherFiles').files.length;
+  document.getElementById('rvFiles').textContent = 'Idea Canvas: '+(c?'✓':'✗ ยังไม่แนบ')+' · ประวัติ: '+(p?'✓':'✗ ยังไม่แนบ')+' · รูปภาพ '+im+' ไฟล์ · เอกสารอื่น '+ot+' ไฟล์';
+}
+function fileErr(f, pdfOnly){
+  if(f.size > 10*1024*1024) return 'ไฟล์ '+f.name+' ใหญ่เกิน 10 MB';
+  if(pdfOnly && !/\.pdf$/i.test(f.name)) return 'ไฟล์ '+f.name+' ต้องเป็น PDF เท่านั้น';
+  return null;
+}
+function readB64(f, field){
+  return new Promise(function(res, rej){
+    var r=new FileReader();
+    r.onload=function(){ res({field:field, name:f.name, mime:f.type||'application/octet-stream', data:String(r.result).split(',')[1]}); };
+    r.onerror=rej; r.readAsDataURL(f);
+  });
+}
+function showErr(msg, sec){
+  var el=document.getElementById('submitErr');
+  el.textContent=msg; el.classList.remove('hidden');
+  if(sec) jump(sec); else jump('s6');
 }
 function submitForm(){
-  var em=document.getElementById('email').value.trim();
-  if(em==='dup@test.com'){ document.getElementById('dupAlert').classList.remove('hidden'); jump('s1'); return; }
-  if(!ruleR5(true)){ jump('s3'); return; }
-  if(!document.getElementById('agree').checked){ alert('โปรดยืนยันการรับรองข้อมูลก่อนส่งใบสมัคร'); return; }
-  fillReview();
-  document.querySelectorAll('.fstep').forEach(function(x){ x.classList.add('hidden'); });
-  document.getElementById('s7').classList.remove('hidden');
-  document.querySelectorAll('#stepbar .step').forEach(function(s){ s.classList.add('done'); s.classList.remove('cur'); });
-  window.scrollTo(0,0);
+  document.getElementById('submitErr').classList.add('hidden');
+  if(!apiReady()){ showErr('ระบบยังไม่ได้เชื่อมต่อฐานข้อมูล — เจ้าหน้าที่ต้องตั้งค่า API_URL ก่อนเปิดใช้งาน'); return; }
+  var em=val('email');
+  if(!em || em.indexOf('@')<1){ showErr('โปรดกรอกอีเมลให้ถูกต้อง (ขั้นตอนที่ 1)','s1'); return; }
+  if(!radioVal('rtype') || !val('gradYear')){ showErr('โปรดเลือกประเภทนักวิจัยและปีที่จบ (ขั้นตอนที่ 1)','s1'); return; }
+  var reqs=[['prefix','คำนำหน้าชื่อ'],['thFirst','ชื่อ (ไทย)'],['thLast','นามสกุล (ไทย)'],['enFirst','ชื่อ (อังกฤษ)'],['enLast','นามสกุล (อังกฤษ)'],['org','หน่วยงาน'],['curPos','ตำแหน่งปัจจุบัน'],['phone','เบอร์โทรศัพท์']];
+  for(var i=0;i<reqs.length;i++){ if(!val(reqs[i][0])){ showErr('โปรดกรอก: '+reqs[i][1]+' (ขั้นตอนที่ 2)','s2'); return; } }
+  if(!radioVal('orgType')){ showErr('โปรดเลือกประเภทหน่วยงาน (ขั้นตอนที่ 2)','s2'); return; }
+  if(radioVal('orgType')==='อื่นๆ' && !val('orgOtherText')){ showErr('โปรดระบุประเภทหน่วยงาน (ขั้นตอนที่ 2)','s2'); return; }
+  if(!/^[0-9]{9,10}$/.test(val('phone'))){ showErr('เบอร์โทรศัพท์ต้องเป็นตัวเลข 9–10 หลัก (ขั้นตอนที่ 2)','s2'); return; }
+  var mode=radioVal('mode');
+  if(!mode){ showErr('โปรดเลือกรูปแบบการสมัคร (ขั้นตอนที่ 3)','s3'); return; }
+  if(mode==='ทีม' && (!val('teamName') || getMembers().length<1)){ showErr('สมัครแบบทีมต้องกรอกชื่อทีมและผู้ร่วมโครงการอย่างน้อย 1 คน (ขั้นตอนที่ 3)','s3'); return; }
+  if(!radioVal('ted')){ showErr('โปรดระบุความประสงค์ต่อยอด TED Fund (ขั้นตอนที่ 3)','s3'); return; }
+  if(!ruleR5(true)){ showErr('TED Fund ต้องสมัครแบบทีม ≥ 3 คนรวมหัวหน้า (ขั้นตอนที่ 3)','s3'); return; }
+  if(!val('innovTH') || !val('innovEN')){ showErr('โปรดกรอกชื่อนวัตกรรมทั้งไทยและอังกฤษ (ขั้นตอนที่ 4)','s4'); return; }
+  if(!radioVal('theme')){ showErr('โปรดเลือกธีมนวัตกรรม (ขั้นตอนที่ 4)','s4'); return; }
+  if(!val('innovDesc') || !val('innovBenefit')){ showErr('โปรดกรอกคำอธิบายและประโยชน์ของนวัตกรรม (ขั้นตอนที่ 4)','s4'); return; }
+  if(!radioVal('fund')){ showErr('โปรดระบุสถานะการยื่นขอทุนหน่วยงานอื่น (ขั้นตอนที่ 4)','s4'); return; }
+  if(radioVal('fund')==='อยู่ระหว่างยื่น' && !val('fundOrg')){ showErr('โปรดระบุชื่อหน่วยงานที่กำลังยื่นขอทุน (ขั้นตอนที่ 4)','s4'); return; }
+  var cf=document.getElementById('canvasFile').files, pf=document.getElementById('profileFile').files;
+  if(!cf.length){ showErr('โปรดแนบไฟล์ Idea Canvas (ขั้นตอนที่ 5)','s5'); return; }
+  if(!pf.length){ showErr('โปรดแนบไฟล์ประวัติผู้สมัคร/ทีม (ขั้นตอนที่ 5)','s5'); return; }
+  var imf=document.getElementById('imgFiles').files, otf=document.getElementById('otherFiles').files;
+  if(imf.length>5 || otf.length>5){ showErr('รูปภาพ/เอกสารอื่นอัปโหลดได้สูงสุดอย่างละ 5 ไฟล์ (ขั้นตอนที่ 4)','s4'); return; }
+  var err = fileErr(cf[0],true) || fileErr(pf[0],true), total=cf[0].size+pf[0].size;
+  for(var i=0;i<imf.length && !err;i++){ err=fileErr(imf[i],false); total+=imf[i].size; }
+  for(var i=0;i<otf.length && !err;i++){ err=fileErr(otf[i],false); total+=otf[i].size; }
+  if(err){ showErr(err,'s5'); return; }
+  if(total > 25*1024*1024){ showErr('ไฟล์แนบรวมกันต้องไม่เกิน 25 MB — โปรดลดขนาดไฟล์'); return; }
+  if(!document.getElementById('agree').checked){ showErr('โปรดติ๊กยืนยันการรับรองข้อมูลก่อนส่งใบสมัคร'); return; }
+
+  var jobs=[readB64(cf[0],'canvas'), readB64(pf[0],'profile')];
+  for(var i=0;i<imf.length;i++) jobs.push(readB64(imf[i],'images'));
+  for(var i=0;i<otf.length;i++) jobs.push(readB64(otf[i],'others'));
+  document.getElementById('overlay').classList.add('show');
+  document.getElementById('btnSubmit').disabled=true;
+  Promise.all(jobs).then(function(files){
+    var payload={ email:em, rtype:radioVal('rtype'), gradYear:val('gradYear'), prefix:val('prefix'),
+      acadPos:val('acadPos'), thFirst:val('thFirst'), thLast:val('thLast'), enFirst:val('enFirst'), enLast:val('enLast'),
+      org:val('org'), orgType:radioVal('orgType')==='อื่นๆ' ? 'อื่นๆ: '+val('orgOtherText') : radioVal('orgType'),
+      curPos:val('curPos'), phone:val('phone'), mode:mode, teamName:val('teamName'), members:getMembers(),
+      ted:radioVal('ted'), innovTH:val('innovTH'), innovEN:val('innovEN'), theme:radioVal('theme'),
+      innovDesc:val('innovDesc'), innovBenefit:val('innovBenefit'), fundStatus:radioVal('fund'), fundOrg:val('fundOrg'),
+      files:files };
+    return fetch(API_URL, {method:'POST', body:JSON.stringify(payload)});
+  }).then(function(r){ return r.json(); }).then(function(j){
+    document.getElementById('overlay').classList.remove('show');
+    document.getElementById('btnSubmit').disabled=false;
+    if(j.ok){
+      document.getElementById('okId').textContent=j.appId;
+      document.getElementById('okTitle').textContent = j.edited ? 'แก้ไขใบสมัครเรียบร้อยแล้ว' : 'ส่งใบสมัครเรียบร้อยแล้ว';
+      document.querySelectorAll('.fstep').forEach(function(x){x.classList.add('hidden');});
+      document.getElementById('s7').classList.remove('hidden');
+      window.scrollTo(0,0);
+    } else showErr('ส่งไม่สำเร็จ: '+(j.error||'ไม่ทราบสาเหตุ'));
+  }).catch(function(e){
+    document.getElementById('overlay').classList.remove('show');
+    document.getElementById('btnSubmit').disabled=false;
+    showErr('เกิดข้อผิดพลาดในการเชื่อมต่อ โปรดลองใหม่ หรือติดต่อ tts@tsri.or.th ('+e+')');
+  });
 }
-function showStatus(){ document.getElementById('stResult').classList.remove('hidden'); }
+function showStatus(){
+  var em=document.getElementById('stEmail').value.trim().toLowerCase();
+  document.getElementById('stResult').classList.add('hidden');
+  document.getElementById('stNotFound').classList.add('hidden');
+  if(!apiReady()){ document.getElementById('stNotFound').textContent='ระบบยังไม่ได้เชื่อมต่อฐานข้อมูล'; document.getElementById('stNotFound').classList.remove('hidden'); return; }
+  if(!em){ return; }
+  var btn=document.getElementById('btnStatus'); btn.disabled=true;
+  fetch(API_URL+'?action=status&email='+encodeURIComponent(em))
+    .then(function(r){return r.json();})
+    .then(function(j){
+      btn.disabled=false;
+      if(j.ok && j.found){
+        document.getElementById('stInfo').innerHTML='รหัสใบสมัคร <b>'+j.appId+'</b>'+(j.team?' · '+j.team:'')+(j.theme?' · '+j.theme:'')+' · ส่งเมื่อ '+j.submittedAt+' · สถานะปัจจุบัน: <b>'+j.status+'</b>';
+        var order=['ส่งใบสมัครแล้ว','ปิดรับสมัคร','อยู่ระหว่างพิจารณา','ประกาศผล','Final'];
+        var idx=0; order.forEach(function(k,i){ if(String(j.status).indexOf(k.split(' ')[0])>=0) idx=i; });
+        document.querySelectorAll('#stFlow .sf').forEach(function(s,i){ s.classList.toggle('on', i<=idx); });
+        document.getElementById('stResult').classList.remove('hidden');
+      } else { document.getElementById('stNotFound').classList.remove('hidden'); }
+    })
+    .catch(function(){ btn.disabled=false; document.getElementById('stNotFound').classList.remove('hidden'); });
+}
 </script>
 </body>
 </html>
