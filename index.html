@@ -96,7 +96,7 @@
 
   <div class="card fstep" id="s1">
     <h3>ขั้นตอนที่ 1 · ตรวจสอบคุณสมบัติผู้สมัคร</h3>
-    <p class="hint">คุณสมบัติ: นักวิจัยรุ่นใหม่ (จบ ≤5 ปี) หรือนักวิจัยรุ่นกลาง (จบ >5 แต่ ≤15 ปี)</p>
+    <p class="hint">คุณสมบัติ: นักวิจัยรุ่นใหม่ — จบการศึกษาขั้นสูงสุด (ป.ตรี ป.โท ป.เอก postdoc) มาแล้วไม่เกิน 5 ปี | นักวิจัยรุ่นกลาง — จบการศึกษาขั้นสูงสุด (ป.ตรี ป.โท ป.เอก postdoc) มาแล้วเกิน 5 ปี แต่ไม่เกิน 15 ปี</p>
     <div class="field">
       <label class="lb">อีเมลของหัวหน้าโครงการ <span class="req">*</span></label>
       <input type="email" id="email" placeholder="name@university.ac.th">
@@ -105,8 +105,8 @@
     <div class="field">
       <label class="lb">ท่านเป็นนักวิจัยประเภทใด <span class="req">*</span></label>
       <div class="radio-row">
-        <label><input type="radio" name="rtype" value="นักวิจัยรุ่นใหม่" onchange="ruleR1()"> นักวิจัยรุ่นใหม่ — จบการศึกษาสูงสุด ≤ 5 ปี (ต่อยอด TED Fund ได้)</label>
-        <label><input type="radio" name="rtype" value="นักวิจัยรุ่นกลาง" onchange="ruleR1()"> นักวิจัยรุ่นกลาง — จบ > 5 แต่ ≤ 15 ปี (ต่อยอด PMU)</label>
+        <label><input type="radio" name="rtype" value="นักวิจัยรุ่นใหม่" onchange="ruleR1()"> นักวิจัยรุ่นใหม่ — จบการศึกษาขั้นสูงสุดมาแล้ว ≤ 5 ปี (ต่อยอด TED Fund ได้)</label>
+        <label><input type="radio" name="rtype" value="นักวิจัยรุ่นกลาง" onchange="ruleR1()"> นักวิจัยรุ่นกลาง — จบการศึกษาขั้นสูงสุดมาแล้ว > 5 ปี แต่ ≤ 15 ปี (ต่อยอด PMU)</label>
       </div>
     </div>
     <div class="cond hidden" id="yearBox">
@@ -156,10 +156,10 @@
       </div>
     </div>
     <div class="field">
-      <label class="lb">ประสงค์ต่อยอดขอทุน TED Fund หรือไม่ <span class="req">*</span></label>
+      <label class="lb">ประสงค์ต่อยอดขอทุนเมื่อสิ้นสุดกิจกรรมหรือไม่ <span class="req">*</span></label>
       <div class="radio-row">
-        <label><input type="radio" name="ted" value="ประสงค์" onchange="ruleR5()"> ประสงค์ (ต้องเป็นทีม ≥ 3 คน และสมาชิกจบ ≤ 5 ปี)</label>
-        <label><input type="radio" name="ted" value="ไม่ประสงค์" onchange="ruleR5()"> ไม่ประสงค์</label>
+        <label><input type="radio" name="ted" value="ต่อยอดขอทุน TED Fund" onchange="ruleR5()"> ประสงค์ต่อยอดขอทุน TED Fund (ต้องเป็นทีม ≥ 3 คน *ข้อกำหนดของ TED Fund)</label>
+        <label><input type="radio" name="ted" value="ต่อยอดขอทุน PMUs" onchange="ruleR5()"> ประสงค์ต่อยอดขอทุน PMUs เมื่อสิ้นสุดกิจกรรม</label>
       </div>
       <div class="alert hidden" id="tedAlert">กรณีประสงค์ต่อยอด TED Fund ต้องสมัครแบบทีม และมีสมาชิกรวมหัวหน้าโครงการไม่น้อยกว่า 3 คน</div>
     </div>
@@ -205,7 +205,17 @@
       </div>
     </div>
     <div class="cond hidden" id="fundBox">
-      <div class="field" style="margin-top:4px;max-width:420px"><label class="lb">ชื่อหน่วยงานที่กำลังยื่นขอรับทุน <span class="req">*</span></label><input type="text" id="fundOrg"></div>
+      <div class="field" style="margin-top:4px;max-width:420px"><label class="lb">หน่วยงานที่ท่านกำลังยื่นขอรับทุนคือหน่วยงานใด (ไม่บังคับกรอก)</label><input type="text" id="fundOrg"></div>
+    </div>
+    <div class="field">
+      <label class="lb">นวัตกรรมชิ้นนี้เคยได้รับทุนสนับสนุนการทำงานวิจัยหรือไม่ <span class="req">*</span></label>
+      <div class="radio-row">
+        <label><input type="radio" name="prevFund" value="เคย" onchange="rulePrev(true)"> เคย</label>
+        <label><input type="radio" name="prevFund" value="ไม่เคย" onchange="rulePrev(false)"> ไม่เคย</label>
+      </div>
+    </div>
+    <div class="cond hidden" id="prevFundBox">
+      <div class="field" style="margin-top:4px;max-width:420px"><label class="lb">หน่วยงานให้ทุนที่เคยได้รับการสนับสนุนในนวัตกรรมนี้ (ไม่บังคับกรอก)</label><input type="text" id="prevFundOrg"></div>
     </div>
   </div>
 
@@ -322,11 +332,12 @@ function ruleR3(){
   ruleR5();
 }
 function ruleR4(show){ document.getElementById('fundBox').classList.toggle('hidden',!show); }
+function rulePrev(show){ document.getElementById('prevFundBox').classList.toggle('hidden',!show); }
 function ruleR5(block){
   var ted=document.querySelector('input[name=ted]:checked');
   var mode=document.querySelector('input[name=mode]:checked');
   var members=document.getElementById('members').children.length;
-  var bad = !!(ted && ted.value==='ประสงค์' && (!mode || mode.value!=='ทีม' || members<2));
+  var bad = !!(ted && ted.value.indexOf('TED')>=0 && (!mode || mode.value!=='ทีม' || members<2));
   document.getElementById('tedAlert').classList.toggle('hidden',!bad);
   if(block===true && bad) return false;
   return true;
@@ -399,13 +410,13 @@ function submitForm(){
   var mode=radioVal('mode');
   if(!mode){ showErr('โปรดเลือกรูปแบบการสมัคร (ขั้นตอนที่ 3)','s3'); return; }
   if(mode==='ทีม' && (!val('teamName') || getMembers().length<1)){ showErr('สมัครแบบทีมต้องกรอกชื่อทีมและผู้ร่วมโครงการอย่างน้อย 1 คน (ขั้นตอนที่ 3)','s3'); return; }
-  if(!radioVal('ted')){ showErr('โปรดระบุความประสงค์ต่อยอด TED Fund (ขั้นตอนที่ 3)','s3'); return; }
+  if(!radioVal('ted')){ showErr('โปรดระบุความประสงค์ต่อยอดขอทุนเมื่อสิ้นสุดกิจกรรม (ขั้นตอนที่ 3)','s3'); return; }
   if(!ruleR5(true)){ showErr('TED Fund ต้องสมัครแบบทีม ≥ 3 คนรวมหัวหน้า (ขั้นตอนที่ 3)','s3'); return; }
   if(!val('innovTH') || !val('innovEN')){ showErr('โปรดกรอกชื่อนวัตกรรมทั้งไทยและอังกฤษ (ขั้นตอนที่ 4)','s4'); return; }
   if(!radioVal('theme')){ showErr('โปรดเลือกธีมนวัตกรรม (ขั้นตอนที่ 4)','s4'); return; }
   if(!val('innovDesc') || !val('innovBenefit')){ showErr('โปรดกรอกคำอธิบายและประโยชน์ของนวัตกรรม (ขั้นตอนที่ 4)','s4'); return; }
   if(!radioVal('fund')){ showErr('โปรดระบุสถานะการยื่นขอทุนหน่วยงานอื่น (ขั้นตอนที่ 4)','s4'); return; }
-  if(radioVal('fund')==='อยู่ระหว่างยื่น' && !val('fundOrg')){ showErr('โปรดระบุชื่อหน่วยงานที่กำลังยื่นขอทุน (ขั้นตอนที่ 4)','s4'); return; }
+  if(!radioVal('prevFund')){ showErr('โปรดระบุว่านวัตกรรมนี้เคยได้รับทุนสนับสนุนหรือไม่ (ขั้นตอนที่ 4)','s4'); return; }
   var cf=document.getElementById('canvasFile').files, pf=document.getElementById('profileFile').files;
   if(!cf.length){ showErr('โปรดแนบไฟล์ Idea Canvas (ขั้นตอนที่ 5)','s5'); return; }
   if(!pf.length){ showErr('โปรดแนบไฟล์ประวัติผู้สมัคร/ทีม (ขั้นตอนที่ 5)','s5'); return; }
@@ -429,7 +440,7 @@ function submitForm(){
       org:val('org'), orgType:radioVal('orgType')==='อื่นๆ' ? 'อื่นๆ: '+val('orgOtherText') : radioVal('orgType'),
       curPos:val('curPos'), phone:val('phone'), mode:mode, teamName:val('teamName'), members:getMembers(),
       ted:radioVal('ted'), innovTH:val('innovTH'), innovEN:val('innovEN'), theme:radioVal('theme'),
-      innovDesc:val('innovDesc'), innovBenefit:val('innovBenefit'), fundStatus:radioVal('fund'), fundOrg:val('fundOrg'),
+      innovDesc:val('innovDesc'), innovBenefit:val('innovBenefit'), fundStatus:radioVal('fund'), fundOrg:val('fundOrg'), prevFund:radioVal('prevFund'), prevFundOrg:val('prevFundOrg'),
       files:files };
     return fetch(API_URL, {method:'POST', body:JSON.stringify(payload)});
   }).then(function(r){ return r.json(); }).then(function(j){
